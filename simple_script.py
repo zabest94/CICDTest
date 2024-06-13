@@ -1,4 +1,5 @@
 import random
+import math
 
 rand1 = random.randint(0, 10)
 rand2 = random.randint(0, 10)
