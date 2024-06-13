@@ -9,7 +9,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Test_Step
-        run: echo "hello"
+        run:  |
+          pip install -U pytest
+          pytest test.py
+
