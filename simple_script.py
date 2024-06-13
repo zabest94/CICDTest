@@ -10,5 +10,5 @@ def add_vars():
     print("rand2 is:", rand2)
     print("rand3 is:", rand3)
     print("Result of rand1/2/3 is:",result)
+    return result
 
-add_vars()
