@@ -10,8 +10,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Test_Step
+      - name: Test_Step_With_Pytest
         run:  |
-          pip install -U pytest
-          pytest ../../test.py
+          pip install pytest pytest-cov
+          pytest test.py
 
