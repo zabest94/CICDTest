@@ -7,10 +7,12 @@ on:
 
 
 jobs:
-  lint:
+  lint_job:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
       - name: Lint with Ruff
@@ -18,21 +20,23 @@ jobs:
           pip install ruff
           ruff check --output-format=github .
         continue-on-error: true
-  test:
+  run_pytest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Test with pytest
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - name: Test with pytest
+      - name: Testing with pytest
         run: |
           pip install requests
           pip install pytest pytest-cov
           pytest test.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
-  json:
+  test_json:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check Json
+      - name: Test Jsob
         run: |
           python3 test.py
