@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-      #- name: Set up Python
-        #uses: actions/setup-python@v5
       - name: Lint with Ruff
         run: |
           pip install ruff
@@ -31,3 +29,8 @@ jobs:
       - name: Test Json
         run: |
           python3 test.py
+  upload_logs:
+    uses: actions/upload-artifact@v4
+    with:
+      name: 'artifact'
+      path: .
