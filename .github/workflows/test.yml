@@ -10,9 +10,9 @@ jobs:
   compplete_action:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: 'Checkout Repo'
         uses: actions/checkout@v4
-      - name: Lint with Ruff
+      - name: 'Lint with Ruff'
         run: |
           pip install ruff
           ruff check --output-format=github .
@@ -22,7 +22,7 @@ jobs:
            touch my_file.txt
            pip install requests
            pip install pytest pytest-cov
-           pytest test.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+           pytest test.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html > my_file.txt
         continue-on-error: true
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
@@ -34,6 +34,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Test Json
+      - name: 'Test Json'
         run: |
           python3 test.py
