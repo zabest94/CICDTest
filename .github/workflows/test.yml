@@ -22,13 +22,10 @@ jobs:
           ruff check --output-format=github .
         continue-on-error: true
       - name: Test with pytest
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-          run: |
-            pip install requests
-            pip install pytest pytest-cov
-            pytest test.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+        run: |
+           pip install requests
+           pip install pytest pytest-cov
+           pytest test.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
   test_json:
     runs-on: ubuntu-latest
     steps:
