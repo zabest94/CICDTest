@@ -22,6 +22,12 @@ jobs:
            pip install requests
            pip install pytest pytest-cov
            pytest test.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: my_file.txt
+          retention-days: 5
   test_json:
     runs-on: ubuntu-latest
     steps:
@@ -29,12 +35,3 @@ jobs:
       - name: Test Json
         run: |
           python3 test.py
-  build_and_test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v4
-        with:
-          name: my-artifact
-          path: my_file.txt
-          retention-days: 5
