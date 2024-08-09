@@ -24,7 +24,7 @@ jobs:
       - name: Test with pytest
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.10'
           run: |
             pip install requests
             pip install pytest pytest-cov
