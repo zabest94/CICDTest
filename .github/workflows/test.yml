@@ -7,10 +7,11 @@ on:
 
 
 jobs:
-  lint_job:
+  compplete_action:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repo
+        uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -19,20 +20,15 @@ jobs:
         run: |
           pip install ruff
           ruff check --output-format=github .
-        continue-on-error: true
-  run_pytest:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+        continue-on-error: false
       - name: Test with pytest
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - name: Testing with pytest
-        run: |
-          pip install requests
-          pip install pytest pytest-cov
-          pytest test.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+          run: |
+            pip install requests
+            pip install pytest pytest-cov
+            pytest test.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
   test_json:
     runs-on: ubuntu-latest
     steps:
